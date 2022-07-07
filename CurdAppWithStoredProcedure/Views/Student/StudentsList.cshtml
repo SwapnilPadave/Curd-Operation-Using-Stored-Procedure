@@ -1,0 +1,50 @@
+﻿@model CurdAppWithStoredProcedure.Models.AllModels
+@{
+    ViewData["Title"] = "Students List";
+}
+<h1>Students List</h1>
+<a href="/Student/create">Create New Student Record</a>
+<div class="text-center">
+   <div class="row">
+       <div class="col-lg-12">
+           <table class="table">
+               <thead style="background-color:aquamarine">
+                   <tr>
+                       <th scope="col">Student Id</th>
+                       <th scope="col">Student Name</th>
+                       <th scope="col">Email Address</th>
+                       <th scope="col">City</th>
+                       <th scope="col">Created Date</th>
+                       <th scope="col"> </th>
+                   </tr>
+               </thead>
+               <tbody style="background-color:antiquewhite">
+                   @{
+                       if (Model.StudentsList != null && Model.StudentsList.Count > 0)
+                       {
+                           foreach (var item in Model.StudentsList)
+                           {
+                                      <tr>
+                                          <td>@item.StudentId</td>
+
+                                          <td>@item.FullName</td>
+
+                                          <td>@item.Email</td>
+
+                                          <td>@item.City</td>
+
+                                          <td>@item.CreatedOn</td>
+                                          <td>
+                                              <a href="/Student/Details/@item.StudentId">Details</a> /
+                                              <a href="/Student/Update/@item.StudentId">Update</a> /
+                                              <a href="/Stuident/Delete/@item.StudentId">Delete</a>
+                                          </td>
+                                      </tr>
+                           }
+                       }
+                   }
+               </tbody>
+           </table>
+       </div>
+   </div>
+</div>
